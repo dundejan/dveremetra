@@ -37,7 +37,10 @@
                     <ul class="list-group">
                         {% for suggestion in suggestions %}
                         <li class="list-group-item">
-                            Směr k <strong>{{ suggestion.exit }}</strong>: Nastupte do vozu č. {{ suggestion.car }}, dveří č. {{ suggestion.door }}
+                            {% if suggestion.exit %}
+                                Směr k <strong>{{ suggestion.exit }}</strong>:
+                            {% endif %}
+                            Nastupte do vozu č. {{ suggestion.car }}, dveří č. {{ suggestion.door }}
                         </li>
                         {% endfor %}
                     </ul>

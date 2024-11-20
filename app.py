@@ -56,8 +56,8 @@ door_data_a: Dict[str, Dict[str, List[Dict[str, str | int]]]] = {
         # "to_hostivar": [{"car": 4, "door": 4, "exit": "Main exit"}, {"car": 4, "door": 1, "exit": "Secondary exit"}]
     },
     "Náměstí Míru": {
-        "to_motol": [{"car": 2, "door": 1, "exit": "Náměstí Míru"}],
-        "to_hostivar": [{"car": 4, "door": 4, "exit": "Náměstí Míru"}]
+        "to_motol": [{"car": 2, "door": 1}],
+        "to_hostivar": [{"car": 4, "door": 4}]
     },
     "Jiřího z Poděbrad": {
         # "to_motol": [{"car": 3, "door": 3, "exit": "Main exit"}, {"car": 3, "door": 3, "exit": "Secondary exit"}],
