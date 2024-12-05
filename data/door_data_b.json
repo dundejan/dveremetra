@@ -1,0 +1,18 @@
+{
+    "Zličín": {
+        "to_zlicin": [{"car": 4, "door": 3}],
+        "to_cerny_most": [{"car": 2, "door": 2}]
+    },
+    "Hůrka": {
+        "to_zlicin": [{"car": 1, "door": 1}],
+        "to_cerny_most": [{"car": 5, "door": 4}]
+    },
+    "Anděl": {
+        "to_zlicin": [{"car": 1, "door": 2}],
+        "to_cerny_most": [{"car": 3, "door": 1}]
+    },
+    "Florenc": {
+        "to_zlicin": [{"car": 5, "door": 4}],
+        "to_cerny_most": [{"car": 2, "door": 3}]
+    }
+}

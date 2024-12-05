@@ -1,0 +1,14 @@
+{
+    "Nemocnice Motol": {
+        "to_motol": [{"car": 1, "door": 4, "exit": "Main exit"}],
+        "to_hostivar": [{"car": 2, "door": 3, "exit": "Secondary exit"}]
+    },
+    "Petřiny": {
+        "to_motol": [{"car": 3, "door": 2}],
+        "to_hostivar": [{"car": 1, "door": 4}]
+    },
+    "Můstek": {
+        "to_motol": [{"car": 2, "door": 1, "exit": "Main exit"}],
+        "to_hostivar": [{"car": 5, "door": 4}]
+    }
+}
