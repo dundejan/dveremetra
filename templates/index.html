@@ -47,8 +47,16 @@
         .form-control {
             color: #000;
         }
-    </style>
-    <style>
+
+        .car.selected {
+            fill: #4caf50; /* Highlight color for cars */
+        }
+
+        .door.selected {
+            fill: #ff5722; /* Highlight color for doors */
+            stroke-width: 3; /* Make the border thicker */
+        }
+
         /* Ensure the icon matches the input height dynamically */
         .input-group .input-group-text img {
             height: 100%; /* Set to match the input height */
@@ -112,7 +120,7 @@
                 <button type="submit" class="btn btn-primary w-100">Najít ideální nástup</button>
             </form>
 
-            <!-- Error Messages -->
+                        <!-- Error Messages -->
             {% if error_message %}
                 <div class="alert alert-danger mt-4" role="alert">
                     {{ error_message }}
@@ -130,6 +138,16 @@
                             </li>
                         {% endfor %}
                     </ul>
+                </div>
+                <div id="metro-container" class="mt-4"></div>
+                <div class="text-center mt-3">
+                    <i class="bi bi-arrow-left-circle-fill" style="font-size: 2rem; color: #bfbfbf;"></i>
+                    <i class="bi bi-arrow-left-circle-fill" style="font-size: 2rem; color: #bfbfbf;"></i>
+                    <i class="bi bi-arrow-left-circle-fill" style="font-size: 2rem; color: #bfbfbf;"></i>
+                    <span style="font-size: 1rem; font-weight: bold; margin: 10px; color: #646464;">Směr jízdy</span>
+                    <i class="bi bi-arrow-left-circle-fill" style="font-size: 2rem; color: #bfbfbf;"></i>
+                    <i class="bi bi-arrow-left-circle-fill" style="font-size: 2rem; color: #bfbfbf;"></i>
+                    <i class="bi bi-arrow-left-circle-fill" style="font-size: 2rem; color: #bfbfbf;"></i>
                 </div>
             {% elif start and end %}
                 <div class="mt-4">
@@ -218,6 +236,39 @@
 
         $("#start, #end").on("autocompleteselect", updateInputField);
     });
+
+    async function loadMetroSVG() {
+        const response = await fetch('/static/souprava-metra.svg');
+        const svgText = await response.text();
+        const metroContainer = document.getElementById('metro-container');
+        metroContainer.innerHTML = svgText;
+    }
+
+    function highlightDoor(carNumber, doorNumber) {
+    // Remove existing highlights
+    document.querySelectorAll('.car.selected, .door.selected').forEach((el) => {
+        el.classList.remove('selected');
+    });
+
+    // Highlight the specific door
+    const door = document.getElementById(`car-${carNumber}-door-${doorNumber}`);
+    console.log(door);
+    if (door) {
+        door.style.fill = '#ff0000'; // Highlight color
+        door.style.stroke = '#000'; // Add a border
+        door.style.strokeWidth = '3'; // Thicker border
+    }
+}
+
+
+    // Load SVG and highlight door if suggestions exist
+    {% if suggestions %}
+        loadMetroSVG().then(() => {
+            {% for suggestion in suggestions %}
+                highlightDoor({{ suggestion.car }}, {{ suggestion.door }});
+            {% endfor %}
+        });
+    {% endif %}
 </script>
 </body>
 </html>
