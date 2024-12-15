@@ -7,6 +7,10 @@
         "to_letnany": [{"car": 2, "door": 2}],
         "to_haje": [{"car": 3, "door": 3, "exit": "Secondary exit"}]
     },
+    "Černý most": {
+        "to_letnany": [{"car": 5, "door": 4, "exit": "Bad data"}],
+        "to_haje": [{"car": 2, "door": 3, "exit": "Bad data"}]
+    },
     "Háje": {
         "to_letnany": [{"car": 5, "door": 4}],
         "to_haje": [{"car": 2, "door": 1, "exit": "Park entrance"}]

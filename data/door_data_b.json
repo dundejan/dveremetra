@@ -14,5 +14,9 @@
     "Florenc": {
         "to_zlicin": [{"car": 5, "door": 4}],
         "to_cerny_most": [{"car": 2, "door": 3}]
+    },
+    "Černý most": {
+        "to_zlicin": [{"car": 5, "door": 4, "exit": "Bad data"}],
+        "to_cerny_most": [{"car": 2, "door": 3, "exit": "Bad data"}]
     }
 }
