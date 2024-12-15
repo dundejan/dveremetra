@@ -130,7 +130,7 @@
                     <h5>Doporučení:</h5>
                     <ul class="list-group">
                         {% for suggestion in suggestions %}
-                            <li class="list-group-item">
+                            <li class="list-group-item" style="background-color: {% if loop.first %}#36ff00{% else %}#00bfff{% endif %};">
                                 {% if suggestion.exit %}
                                     Směr k <strong>{{ suggestion.exit }}</strong>:
                                 {% endif %}
@@ -244,7 +244,7 @@
         metroContainer.innerHTML = svgText;
     }
 
-    function highlightDoor(carNumber, doorNumber) {
+    function highlightDoor(carNumber, doorNumber, color = '#ff0000') {
     // Remove existing highlights
     document.querySelectorAll('.car.selected, .door.selected').forEach((el) => {
         el.classList.remove('selected');
@@ -254,7 +254,7 @@
     const door = document.getElementById(`car-${carNumber}-door-${doorNumber}`);
     console.log(door);
     if (door) {
-        door.style.fill = '#ff0000'; // Highlight color
+        door.style.fill = color; // Highlight color
         door.style.stroke = '#000'; // Add a border
         door.style.strokeWidth = '3'; // Thicker border
     }
@@ -264,8 +264,12 @@
     // Load SVG and highlight door if suggestions exist
     {% if suggestions %}
         loadMetroSVG().then(() => {
+            let color = "#36ff00";
             {% for suggestion in suggestions %}
-                highlightDoor({{ suggestion.car }}, {{ suggestion.door }});
+                {% if loop.index0 == 1 %}
+                    color = "#00bfff"
+                {% endif %}
+                highlightDoor({{ suggestion.car }}, {{ suggestion.door }}, color);
             {% endfor %}
         });
     {% endif %}
